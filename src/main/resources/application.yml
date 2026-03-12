@@ -1,16 +1,21 @@
 spring:
-  cloud: # aws 리전 설정을 추가합니다.
+  cloud:
+    # AWS 리전 설정 (서울)
     aws:
       region:
         static: ap-northeast-2
   config:
+    # 파라미터 스토어 설정 유지
     import: "aws-parameterstore:/config/startup/"
 
-# S3Service가 읽어갈 버킷 이름 설정
+# S3 및 CloudFront 커스텀 설정
 cloud:
   aws:
     s3:
       bucket: startup-profile-images-kanghyeok
+    cloudfront:
+      # CloudFront 배포 도메인 주소 적용
+      domain: d2q468e029nfe.cloudfront.net
 
 management:
   endpoints:
