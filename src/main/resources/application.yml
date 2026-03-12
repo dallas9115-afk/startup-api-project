@@ -1,0 +1,25 @@
+spring:
+  cloud: # aws 리전 설정을 추가합니다.
+    aws:
+      region:
+        static: ap-northeast-2
+  config:
+    import: "aws-parameterstore:/config/startup/"
+
+# S3Service가 읽어갈 버킷 이름 설정
+cloud:
+  aws:
+    s3:
+      bucket: startup-profile-images-kanghyeok
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  info:
+    env:
+      enabled: true
+
+info:
+  team-name: ${team-name:default-team}
